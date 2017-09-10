@@ -1,0 +1,61 @@
+{
+    "name": "alchemy-studio",
+    "displayName": "alchemy-studio",
+    "description": "Language Tools for writing Elixir Code",
+    "version": "0.0.1",
+    "publisher": "untra",
+    "engines": {
+        "node" : "^8.1.4",
+        "vscode" : "^1.15.1"
+    },
+    "dependencies": {
+    "vscode-languageserver": "^3.1.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.sayHello"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Credo configuration",
+            "properties": {
+                "languageServerCredo.flags": {
+                    "type": "string",
+                    "default": "--strict",
+                    "description": "Flags to be appeneded to `mix credo` (default: `--strict`)"
+                },
+                "languageServerCredo.executablePath": {
+                    "type": "string",
+                    "default": "mix",
+                    "description": "Absolute path to the mix executable. By default it checks for mix in your project root."
+                }
+            }
+        },
+        "commands": [{
+            "command": "extension.sayHello",
+            "title": "Say Hello"
+        }, {
+            "command": "extension.installCredo",
+            "title": "Install Credo"
+        }]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "tslint": "^5.5.0",
+        "typescript": "^2.5.2",
+        "vscode": "^1.1.5",
+        "mocha": "^3.5.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
